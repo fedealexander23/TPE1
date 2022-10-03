@@ -3,7 +3,7 @@ require_once './app/controllers/song.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'list'; // acción por defecto
+$action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -14,16 +14,21 @@ $params = explode('/', $action);
 // instancio el unico controller que existe por ahora
 $songController = new SongController();
 
-
 // tabla de ruteo
 switch ($params[0]) {
-    case 'list':
+    case 'home';
+        $songController->showHome();
+        break;
+    case 'songs':
         $songController->showSong();
         break;
-    /*case 'add':
-        $taskController->addTask();
+    case 'singers':
+        $songController->showSinger();
         break;
-    case 'delete':
+    case 'song':
+        $songController->showSongID($params[1]);
+        break;
+   /*case 'delete':
         // obtengo el parametro de la acción
         $id = $params[1];
         $taskController->deleteTask($id);

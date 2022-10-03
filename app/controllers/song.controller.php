@@ -12,10 +12,23 @@ class SongController{
         $this->view = new SongView();
     }
 
-    function showSong(){
-        $songs = $this->model->getAllSong();
-        $this->view->showTasks($songs);
+    function showHome(){
+        $this->view->showHome();
     }
 
+    function showSong(){
+        $songs = $this->model->getAllSong();
+        $this->view->showSong($songs);
+    }
+
+    function showSongID($id){
+        $songs = $this->model->getSongID($id);
+        $this->view->showSongID($songs);
+
+    }
+
+    function showSinger(){
+        
+    }
 
 }

@@ -9,12 +9,24 @@ class SongView{
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showTasks($songs) {
+    function showHome(){
+        $this->smarty->display('home.tpl');
+    }
+
+    function showSong($songs) {
         // asigno variables al tpl smarty
         $this->smarty->assign('count', count($songs)); 
         $this->smarty->assign('songs', $songs);
 
         // mostrar el tpl
-        $this->smarty->display('taskList.tpl');
+        $this->smarty->display('songList.tpl');
+    }
+
+    function showSongID($songs){
+        // asigno variables al tpl smarty
+        $this->smarty->assign('songs', $songs);
+        // mostrar el tpl
+        $this->smarty->display('songID.tpl');
+
     }
 }

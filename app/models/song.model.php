@@ -20,4 +20,16 @@ class SongModel{
         return $songs;
     }
 
+   public function getSongID($id){
+        // 1. abro conexión a la DB
+        // ya esta abierta por el constructor de la clase
+
+        // 2. ejecuto la sentencia (2 subpasos)
+        $query = $this->db->prepare("SELECT * FROM songs where id = ?");
+        $query->execute([$id]);
+        $songs = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        
+        return $songs;
+    }
+
 }
