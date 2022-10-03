@@ -3,7 +3,6 @@ require_once './app/models/song.model.php';
 require_once './app/views/song.view.php';
 
 class SongController{
-
     private $model;
     private $view;
 
@@ -25,10 +24,6 @@ class SongController{
         $songs = $this->model->getSongID($id);
         $this->view->showSongID($songs);
 
-    }
-
-    function showSinger(){
-        
     }
 
 }

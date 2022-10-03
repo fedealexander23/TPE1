@@ -1,5 +1,6 @@
 <?php
 require_once './app/controllers/song.controller.php';
+require_once './app/controllers/singer.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -13,6 +14,7 @@ $params = explode('/', $action);
 
 // instancio el unico controller que existe por ahora
 $songController = new SongController();
+$singerController = new SingerController();
 
 // tabla de ruteo
 switch ($params[0]) {
@@ -23,7 +25,7 @@ switch ($params[0]) {
         $songController->showSong();
         break;
     case 'singers':
-        $songController->showSinger();
+        $singerController->showSinger();
         break;
     case 'song':
         $songController->showSongID($params[1]);
