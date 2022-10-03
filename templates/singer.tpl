@@ -2,7 +2,7 @@
 
 <br>
 
-<table class="table table-dark table-striped">
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Artista</th>
