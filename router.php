@@ -18,7 +18,7 @@ $songController = new SongController();
 // tabla de ruteo
 switch ($params[0]) {
     case 'list':
-        $songController->showTasks();
+        $songController->showSong();
         break;
     /*case 'add':
         $taskController->addTask();

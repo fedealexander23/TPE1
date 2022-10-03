@@ -8,8 +8,13 @@ class SongController{
     private $view;
 
     public function __construct() {
-        $this->model = new TaskModel();
-        $this->view = new TaskView();
+        $this->model = new SongModel();
+        $this->view = new SongView();
+    }
+
+    function showSong(){
+        $songs = $this->model->getAllSong();
+        $this->view->showTasks($songs);
     }
 
 
