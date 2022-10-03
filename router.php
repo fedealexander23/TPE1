@@ -1,5 +1,5 @@
 <?php
-require_once './app/controllers/task.controller.php';
+require_once './app/controllers/song.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -12,15 +12,15 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 // instancio el unico controller que existe por ahora
-$taskController = new TaskController();
+$songController = new SongController();
 
 
 // tabla de ruteo
 switch ($params[0]) {
     case 'list':
-        $taskController->showTasks();
+        $songController->showTasks();
         break;
-    case 'add':
+    /*case 'add':
         $taskController->addTask();
         break;
     case 'delete':
@@ -31,7 +31,7 @@ switch ($params[0]) {
     case "finalize":  // finalize/:ID
         $id = $params[1];
         $taskController->finalizeTask($id);
-        break;
+        break;*/
     default:
         echo('404 Page not found');
         break;
