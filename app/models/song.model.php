@@ -32,6 +32,17 @@ class SongModel{
         return $songs;
     }
 
+    public function insertSong($title, $genere, $album, $singer){
+        // 1. abro conexión a la DB
+        // ya esta abierta por el constructor de la clase
+
+        // 2. ejecuto la sentencia (2 subpasos)
+        $query = $this->db->prepare("INSERT INTO songs (title, genere, album, singer) VALUES (?, ?, ?, ?)");
+        $query->execute([$title, $genere, $album, $singer]);
+
+        return $this->db->lastInsertId();
+    }
+
     public function filterSinger($singer){
         // 1. abro conexión a la DB
         // ya esta abierta por el constructor de la clase
@@ -42,6 +53,11 @@ class SongModel{
         $songs = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
         return $songs;
+    }
+
+    public function deleteSongById($id){
+        $query = $this->db->prepare('DELETE FROM songs WHERE id = ?');
+        $query->execute([$id]);
     }
 
 }

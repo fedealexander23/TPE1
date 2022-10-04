@@ -4,7 +4,7 @@ require_once './app/controllers/singer.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'home'; // acción por defecto
+$action = 'songs'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -33,15 +33,12 @@ switch ($params[0]) {
     case 'filter';
         $songController->filterSinger();
         break;
-   /*case 'filter':
-        // obtengo el parametro de la acción
-        $id = $params[1];
-        $taskController->deleteTask($id);
+    case 'add-song':
+        $songController->addSong();
         break;
-    case "finalize":  // finalize/:ID
-        $id = $params[1];
-        $taskController->finalizeTask($id);
-        break;*/
+    case "delete": 
+        $songController->deleteSong($params[1]);
+        break;
     default:
         echo('404 Page not found');
         break;

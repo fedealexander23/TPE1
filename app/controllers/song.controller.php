@@ -11,16 +11,16 @@ class SongController{
         $this->view = new SongView();
     }
 
-    function showHome(){
+    public function showHome(){
         $this->view->showHome();
     }
 
-    function showSong(){
+    public function showSong(){
         $songs = $this->model->getAllSong();
         $this->view->showSong($songs);
     }
 
-    function showSongID($id){
+    public function showSongID($id){
         $songs = $this->model->getSongID($id);
         $this->view->showSongID_filter($songs);
 
@@ -32,6 +32,22 @@ class SongController{
         $songs = $this->model->filterSinger($singer);
         $this->view->showSongID_filter($songs);
     }
-    
+
+    function addSong(){
+        $title = $_POST['title'];
+        $genere = $_POST['genere'];
+        $album = $_POST['album'];
+        $singer = $_POST['singer'];
+
+        $songs = $this->model->insertSong($title, $genere, $album, $singer);
+
+        header("Location: " . BASE_URL); 
+    }
+
+    function deleteSong($id){
+        $this->model->deleteSongById($id);
+        header("Location: " . BASE_URL);
+    }
+
 
 }

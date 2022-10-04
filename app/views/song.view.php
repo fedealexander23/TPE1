@@ -15,7 +15,6 @@ class SongView{
 
     public function showSong($songs) {
         // asigno variables al tpl smarty
-        $this->smarty->assign('count', count($songs)); 
         $this->smarty->assign('songs', $songs);
 
         // mostrar el tpl
