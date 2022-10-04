@@ -1,5 +1,10 @@
 {include file="header.tpl"}
 
+<br>
+
+{include file="formfilter.tpl"} 
+
+<br>
 <!-- lista de tareas -->
 <ul class="list-group">
     {foreach from=$songs item=$song}

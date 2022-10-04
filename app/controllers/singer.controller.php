@@ -15,4 +15,5 @@ class SingerController{
         $singer = $this->model->getAllSinger();
         $this->view->showSinger($singer);
     }
+
 }

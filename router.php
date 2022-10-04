@@ -30,7 +30,10 @@ switch ($params[0]) {
     case 'song':
         $songController->showSongID($params[1]);
         break;
-   /*case 'delete':
+    case 'filter';
+        $songController->filterSinger();
+        break;
+   /*case 'filter':
         // obtengo el parametro de la acción
         $id = $params[1];
         $taskController->deleteTask($id);

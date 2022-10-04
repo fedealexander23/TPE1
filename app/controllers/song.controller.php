@@ -22,8 +22,16 @@ class SongController{
 
     function showSongID($id){
         $songs = $this->model->getSongID($id);
-        $this->view->showSongID($songs);
+        $this->view->showSongID_filter($songs);
 
     }
+
+    function filterSinger(){
+        $singer = $_POST['singer'];
+        
+        $songs = $this->model->filterSinger($singer);
+        $this->view->showSongID_filter($songs);
+    }
+    
 
 }

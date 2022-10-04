@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-
+<br>
 <!-- lista de tareas completa por ID -->
 <ul class="list-group">
     {foreach from=$songs item=$song}

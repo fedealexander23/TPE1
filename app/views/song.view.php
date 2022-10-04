@@ -9,11 +9,11 @@ class SongView{
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showHome(){
+    public function showHome(){
         $this->smarty->display('home.tpl');
     }
 
-    function showSong($songs) {
+    public function showSong($songs) {
         // asigno variables al tpl smarty
         $this->smarty->assign('count', count($songs)); 
         $this->smarty->assign('songs', $songs);
@@ -22,11 +22,12 @@ class SongView{
         $this->smarty->display('songList.tpl');
     }
 
-    function showSongID($songs){
+    public function showSongID_filter($songs){
         // asigno variables al tpl smarty
         $this->smarty->assign('songs', $songs);
         // mostrar el tpl
-        $this->smarty->display('songID.tpl');
+        $this->smarty->display('song.id.filter.tpl');
 
     }
+
 }
