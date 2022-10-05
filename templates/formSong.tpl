@@ -14,14 +14,13 @@
       <input name="album" type="text" class="form-control" id="floatingInput" placeholder="Album">
       <label for="floatingInput"><b>Album:</b></label>
     </div>
-    <div class="form-floating mb-3">
-      <input name="singer" type="text" class="form-control" id="floatingInput" placeholder="Artista">
-      <label for="floatingInput"><b>Artista:</b></label>
-      <select name="singer" class="form-select" aria-label="Default select example">
-        <option selected>Artista</option>
-        <option value="1">...</option>
+    <div class="form-floating mb-3">  
+    <select name="singer" class="form-select" aria-label="Default select example">
+        <option selected>- Artista -</option>
+        {foreach from=$songs item=$song}
+          <option value="{$song->singer}">{$song->singer}</option>
+        {/foreach}
       </select>
-      <!-- SELECT -->
-    </div>
+    </div>  
     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
 </form>

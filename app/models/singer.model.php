@@ -43,9 +43,13 @@ class SingerModel{
         return $this->db->lastInsertId();
     }
 
-    public function deleteSingerById($id){
-        $query = $this->db->prepare('DELETE FROM singer WHERE id = ?');
-        $query->execute([$id]);
+    public function deleteSingerById($singer){
+        // 1. abro conexión a la DB
+        // ya esta abierta por el constructor de la clase
+
+        // 2. ejecuto la sentencia (2 subpasos)
+        $query = $this->db->prepare('DELETE FROM singers WHERE singer = ?');
+        $query->execute([$singer]);
     }
 
 }

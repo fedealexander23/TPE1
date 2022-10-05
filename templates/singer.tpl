@@ -14,7 +14,9 @@
         <tr>
           <td>{$singer->singer}</td>
           <td>{$singer->nationality}</td>
-          <td><a href='delete-singer/{$singer->id}' type='button' class='btn btn-danger ml-auto'><img src='./img/delete.png' alt='delete'></a></td>
+          <td>
+            <a href='delete-singer/{$singer->singer}' type='button' class='btn btn-danger ml-auto'><img src='./img/delete.png' alt='delete'></a>
+          </td>
         </tr>
     {/foreach}
   </tbody>
