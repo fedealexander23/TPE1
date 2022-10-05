@@ -36,8 +36,11 @@ switch ($params[0]) {
     case 'add-song':
         $songController->addSong();
         break;
-    case "delete": 
+    case 'delete': 
         $songController->deleteSong($params[1]);
+        break;
+    case 'edit-song':
+        $songController->editSong($params[1]);
         break;
     default:
         echo('404 Page not found');

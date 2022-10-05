@@ -49,5 +49,7 @@ class SongController{
         header("Location: " . BASE_URL);
     }
 
-
+    function editSong($id){
+        $this->view->showFormEdit($id);
+    }
 }

@@ -29,4 +29,9 @@ class SongView{
 
     }
 
+    public function showFormEdit($id){
+        $this->smarty->assign('id', $id);
+        $this->smarty->display('formEditSong.tpl');
+    }
+
 }

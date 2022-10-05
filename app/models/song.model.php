@@ -48,8 +48,9 @@ class SongModel{
         // ya esta abierta por el constructor de la clase
 
         // 2. ejecuto la sentencia (2 subpasos)
-        $query = $this->db->prepare("SELECT * FROM songs WHERE singer = ?");
-        $query->execute([$singer]);
+        //$query = $this->db->prepare("SELECT * FROM songs WHERE singer = ?");
+        $query = $this->db->prepare("SELECT * FROM songs WHERE singer LIKE ?");
+        $query->execute(["%$singer%"]);
         $songs = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
         return $songs;
@@ -60,4 +61,8 @@ class SongModel{
         $query->execute([$id]);
     }
 
+    function  editDebtById($id, $subject, $teacher){
+
+        $this->db->query("UPDATE subjects SET subject = '$subject', teacher = '$teacher' WHERE id=$id");
+    }
 }
