@@ -17,6 +17,11 @@
     <div class="form-floating mb-3">
       <input name="singer" type="text" class="form-control" id="floatingInput" placeholder="Artista">
       <label for="floatingInput"><b>Artista:</b></label>
+      <select name="singer" class="form-select" aria-label="Default select example">
+        <option selected>Artista</option>
+        <option value="1">...</option>
+      </select>
+      <!-- SELECT -->
     </div>
     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
 </form>
