@@ -16,4 +16,10 @@ class SingerView{
         // mostrar el tpl
         $this->smarty->display('singer.tpl');
     }
+
+    public function showFormEdit($singer){
+        $this->smarty->assign('singer', $singer);
+        $this->smarty->display('formEditSinger.tpl');
+    }
+
 }

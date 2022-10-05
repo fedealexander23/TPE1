@@ -54,7 +54,20 @@ class SongController{
         header("Location: " . BASE_URL);
     }
 
-    function editSong($id){
-        $this->view->showFormEdit($id);
+    function showEditForm($id){
+        $song = $this->model->getSongID($id);
+        $this->view->showFormEdit($song);
     }
-}
+
+    function editSong($id){
+        $title = $_POST['title'];
+        $genere = $_POST['genere'];
+        $album = $_POST['album'];
+        $singer = $_POST['singer'];
+
+        if(isset($title)){
+            $this->model->editSongById($title, $genere, $album, $singer, $id);
+            header("Location: " . BASE_URL);
+        }
+    }
+}   

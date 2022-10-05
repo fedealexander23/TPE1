@@ -18,7 +18,7 @@ $singerController = new SingerController();
 
 // tabla de ruteo
 switch ($params[0]) {
-    case 'home';
+    case 'home'; //admin o invitado
         $songController->showHome();
         break;
     case 'songs':
@@ -40,6 +40,9 @@ switch ($params[0]) {
         $songController->deleteSong($params[1]);
         break;
     case 'edit-song':
+        $songController->showEditForm($params[1]);
+        break;
+    case 'song-edit':
         $songController->editSong($params[1]);
         break;
     case 'add-singer':
@@ -49,6 +52,9 @@ switch ($params[0]) {
         $singerController->deleteSinger($params[1]);
         break;
     case 'edit-singer':
+        $singerController->showEditForm($params[1]);
+        break;
+    case 'singer-edit':
         $singerController->editSinger($params[1]);
         break;
     default:

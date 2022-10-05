@@ -20,17 +20,29 @@ class SingerController{
         $singer = $_POST['singer'];
         $nationality = $_POST['nationality'];
 
-        $singer = $this->model->insertSinger($singer, $nationality);
-    
-        header("Location: " . BASE_URL); 
+        if(isset($singer) && isset($nationality)){
+            $singer = $this->model->insertSinger($singer, $nationality);
+            header("Location: " . BASE_URL . "/singers" ); 
+        }
     }
 
     function deleteSinger($singer){
         $this->model->deleteSingerById($singer);
-        header("Location: " . BASE_URL . 'singers');
+        header("Location: " . BASE_URL . '/singers');
+    }
+
+    function showEditForm($id){
+        $singer = $this->model->getSingerID($id);
+        $this->view->showFormEdit($singer);
     }
 
     function editSinger($id){
-        
+        $singer = $_POST['singer'];
+        $nationality = $_POST['nationality'];
+
+        if(isset($singer) && isset($nationality)){
+            $this->model->editSingerById($singer, $nationality, $id);
+            header("Location: " . BASE_URL . "/singers"); 
+        }
     }
 }

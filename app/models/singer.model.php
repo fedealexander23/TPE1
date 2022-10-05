@@ -20,16 +20,16 @@ class SingerModel{
         return $singer;
     }
 
-   public function getSongID($id){
+   public function getSingerID($id){
         // 1. abro conexión a la DB
         // ya esta abierta por el constructor de la clase
 
         // 2. ejecuto la sentencia (2 subpasos)
-        $query = $this->db->prepare("SELECT * FROM songs where id = ?");
+        $query = $this->db->prepare("SELECT * FROM singers where singer = ?");
         $query->execute([$id]);
-        $songs = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        $singer = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
-        return $songs;
+        return $singer;
     }
 
     public function insertSinger($singer, $nationality){
@@ -52,4 +52,9 @@ class SingerModel{
         $query->execute([$singer]);
     }
 
+    function  editSingerById($singer, $nationality, $id){
+        $query = $this->db->prepare("UPDATE singers SET singer = ?, nationality = ? WHERE singer = ?");
+        $query->execute([$singer, $nationality, $id]);
+    }
 }
+
