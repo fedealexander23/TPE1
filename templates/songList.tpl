@@ -13,7 +13,7 @@
             <div class="ml-auto">
                 <a href='song/{$song->id}' type='button' class='btn btn-secondary'>Ver ficha completa</a>
                 <a href='edit-song/{$song->id}' type='button' class='btn btn-success'><img src='./img/edit.png' alt='edit'></a>
-                <a href='delete/{$song->id}' type='button' class='btn btn-danger ml-auto'><img src='./img/delete.png' alt='delete'></a>
+                <a href='delete-song/{$song->id}' type='button' class='btn btn-danger ml-auto'><img src='./img/delete.png' alt='delete'></a>
             </div>
         </li>
     {/foreach}

@@ -28,9 +28,12 @@ class SongController{
 
     function filterSinger(){
         $singer = $_POST['singer'];
+
+        if(isset($singer)){
+            $songs = $this->model->filterSinger($singer);
+            $this->view->showSongID_filter($songs);
+        }
         
-        $songs = $this->model->filterSinger($singer);
-        $this->view->showSongID_filter($songs);
     }
 
     function addSong(){
@@ -39,7 +42,9 @@ class SongController{
         $album = $_POST['album'];
         $singer = $_POST['singer'];
 
-        $songs = $this->model->insertSong($title, $genere, $album, $singer);
+        if(isset($title) && isset($genere) && isset($album) && isset($singer)){
+            $songs = $this->model->insertSong($title, $genere, $album, $singer);
+        }
 
         header("Location: " . BASE_URL); 
     }

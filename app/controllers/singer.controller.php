@@ -16,4 +16,23 @@ class SingerController{
         $this->view->showSinger($singer);
     }
 
+    function addSinger(){
+        $singer = $_POST['singer'];
+        $nationality = $_POST['nationality'];
+
+        if(!isset($singer) && !isset($singer)){
+            $singer = $this->model->insertSinger($singer, $nationality);
+        }
+
+        header("Location: " . BASE_URL); 
+    }
+
+    function deleteSinger($id){
+        $this->model->deleteSingerById($id);
+        header("Location: " . BASE_URL);
+    }
+
+    function editSinger($id){
+        
+    }
 }

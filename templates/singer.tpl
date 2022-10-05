@@ -12,11 +12,14 @@
   <tbody>
     {foreach from=$singers item=$singer}
         <tr>
-            <td>{$singer->singer}</td>
-            <td>{$singer->nationality}</td>
+          <td>{$singer->singer}</td>
+          <td>{$singer->nationality}</td>
+          <td><a href='delete-singer/{$singer->id}' type='button' class='btn btn-danger ml-auto'><img src='./img/delete.png' alt='delete'></a></td>
         </tr>
     {/foreach}
   </tbody>
 </table>
-
+<br>
+{include file="formSinger.tpl"}
+<br>
 {include file="footer.tpl"}
