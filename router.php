@@ -1,10 +1,11 @@
 <?php
 require_once './app/controllers/song.controller.php';
 require_once './app/controllers/singer.controller.php';
+require_once './app/controllers/auth.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'songs'; // acción por defecto
+$action = 'login'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -20,7 +21,11 @@ $authController = new AuthController();
 // tabla de ruteo
 switch ($params[0]) {
     case 'login':
-
+        $authController->showFormLogin();
+        break;
+    case 'validate';
+        $authController->validateUser();
+        break;
     case 'home'; //admin o invitado
         $songController->showHome();
         break;
