@@ -15,9 +15,12 @@ $params = explode('/', $action);
 // instancio el unico controller que existe por ahora
 $songController = new SongController();
 $singerController = new SingerController();
+$authController = new AuthController();
 
 // tabla de ruteo
 switch ($params[0]) {
+    case 'login':
+
     case 'home'; //admin o invitado
         $songController->showHome();
         break;
