@@ -1,6 +1,7 @@
 <?php
 require_once './app/models/user.model.php';
 require_once './app/views/auth.view.php';
+require_once './app/helpers/auth.helper.php';
 
 class AuthController{
     private $model;
@@ -36,5 +37,11 @@ class AuthController{
             // si los datos son incorrectos muestro el form con un erro
            $this->view->showFormLogin("El usuario o la contraseña no existe.");
         } 
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        header("Location: " . BASE_URL);
     }
 }

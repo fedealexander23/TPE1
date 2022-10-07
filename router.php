@@ -26,6 +26,9 @@ switch ($params[0]) {
     case 'validate';
         $authController->validateUser();
         break;
+    case 'logout':
+        $authController->logout();
+        break;
     case 'home'; //admin o invitado
         $songController->showHome();
         break;

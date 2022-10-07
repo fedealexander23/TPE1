@@ -1,17 +1,22 @@
 <?php
 require_once './app/models/singer.model.php';
 require_once './app/views/singer.view.php';
+require_once './app/helpers/auth.helper.php';
 
 class SingerController{
     private $model;
     private $view;
-
+    
+    
     public function __construct() {
         $this->model = new SingerModel();
         $this->view = new SingerView();
     }
-
+    
     function showSinger(){
+        // PROBAR INSTANCIAR EN EL CONSTRUCTOR Y PASAR POR PARAMETRO A LA FUNCION 
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn();
         $singer = $this->model->getAllSinger();
         $this->view->showSinger($singer);
     }
