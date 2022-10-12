@@ -32,7 +32,7 @@ class AuthController{
             $_SESSION['USER_EMAIL'] = $user->email;
             $_SESSION['IS_LOGGED'] = true;
 
-            header("Location: " . BASE_URL);
+            header("Location: " . BASE_URL . "songs");
         } else {
             // si los datos son incorrectos muestro el form con un erro
            $this->view->showFormLogin("El usuario o la contraseña no existe.");
@@ -44,4 +44,4 @@ class AuthController{
         session_destroy();
         header("Location: " . BASE_URL);
     }
-}
+}   

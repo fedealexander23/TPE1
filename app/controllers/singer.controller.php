@@ -8,6 +8,7 @@ class SingerController{
     private $view;
     
     
+    
     public function __construct() {
         $this->model = new SingerModel();
         $this->view = new SingerView();
@@ -16,7 +17,7 @@ class SingerController{
     function showSinger(){
         $authHelper = new AuthHelper();
         $singer = $this->model->getAllSinger();
-        $this->view->showSinger($singer, $authHelper);
+        $this->view->showSinger($singer, $authHelper->isAdmin());
     }
 
     function addSinger(){

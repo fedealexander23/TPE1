@@ -2,6 +2,7 @@
 require_once './app/models/song.model.php';
 require_once './app/views/song.view.php';
 require_once './app/controllers/singer.controller.php';
+require_once './app/helpers/auth.helper.php';
 
 class SongController{
     private $model;
@@ -17,10 +18,11 @@ class SongController{
     }
 
     public function showSong(){
+        $authHelper = new AuthHelper();
         $this->modelSinger = new SingerModel();
         $singer = $this->modelSinger->getAllSinger();
         $songs = $this->model->getAllSong();
-        $this->view->showSong($songs, $singer);
+        $this->view->showSong($songs, $singer, $authHelper->isAdmin());
     }
 
     public function showSongID($id){
@@ -40,6 +42,7 @@ class SongController{
     }
 
     public function addSong(){
+
         $title = $_POST['title'];
         $genere = $_POST['genere'];
         $album = $_POST['album'];

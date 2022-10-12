@@ -9,10 +9,10 @@ class SingerView{
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showSinger($singer, $authHelper){
+    function showSinger($singer, $admin){
         // asigno variables al tpl smarty
         $this->smarty->assign('singers', $singer);
-        $this->smarty->assign('sesion', $authHelper);
+        $this->smarty->assign('admin', $admin);
 
         // mostrar el tpl
         $this->smarty->display('singer.tpl');

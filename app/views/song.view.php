@@ -13,10 +13,11 @@ class SongView{
         $this->smarty->display('home.tpl');
     }
 
-    public function showSong($songs, $singer) {
+    public function showSong($songs, $singer, $admin) {
         // asigno variables al tpl smarty
         $this->smarty->assign('songs', $songs);
         $this->smarty->assign('singers', $singer);
+        $this->smarty->assign('admin', $admin);
 
         // mostrar el tpl
         $this->smarty->display('songList.tpl');
