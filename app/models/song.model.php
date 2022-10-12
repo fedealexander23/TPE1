@@ -62,7 +62,7 @@ class SongModel{
     }
 
 
-    function  editSongById($title, $genere, $album, $singer, $id){
+    public function  editSongById($title, $genere, $album, $singer, $id){
         $query = $this->db->prepare("UPDATE songs SET title = ? , genere = ?, album = ?, singer = ? WHERE id = ?");
         $query->execute([$title, $genere, $album, $singer, $id]);
 
