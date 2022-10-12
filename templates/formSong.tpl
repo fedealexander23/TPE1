@@ -17,8 +17,8 @@
     <div class="form-floating mb-3">  
     <select name="singer" class="form-select" aria-label="Default select example">
         <option selected>- Artista -</option>
-        {foreach from=$songs item=$song}
-          <option value="{$song->singer}">{$song->singer}</option>
+        {foreach from=$singers item=$singer}
+          <option value="{$singer->singer}">{$singer->singer}</option>
         {/foreach}
       </select>
     </div>  

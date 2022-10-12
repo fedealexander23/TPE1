@@ -1,6 +1,7 @@
 <?php
 require_once './app/models/song.model.php';
 require_once './app/views/song.view.php';
+require_once './app/controllers/singer.controller.php';
 
 class SongController{
     private $model;
@@ -16,8 +17,10 @@ class SongController{
     }
 
     public function showSong(){
+        $this->modelSinger = new SingerModel();
+        $singer = $this->modelSinger->getAllSinger();
         $songs = $this->model->getAllSong();
-        $this->view->showSong($songs);
+        $this->view->showSong($songs, $singer);
     }
 
     public function showSongID($id){
@@ -26,7 +29,7 @@ class SongController{
 
     }
 
-    function filterSinger(){
+    public function filterSinger(){
         $singer = $_POST['singer'];
 
         if(isset($singer)){
@@ -36,7 +39,7 @@ class SongController{
         
     }
 
-    function addSong(){
+    public function addSong(){
         $title = $_POST['title'];
         $genere = $_POST['genere'];
         $album = $_POST['album'];
@@ -49,17 +52,17 @@ class SongController{
         header("Location: " . BASE_URL); 
     }
 
-    function deleteSong($id){
+    public function deleteSong($id){
         $this->model->deleteSongById($id);
         header("Location: " . BASE_URL);
     }
 
-    function showEditForm($id){
+    public function showEditForm($id){
         $song = $this->model->getSongID($id);
         $this->view->showFormEdit($song);
     }
 
-    function editSong($id){
+    public function editSong($id){
         $title = $_POST['title'];
         $genere = $_POST['genere'];
         $album = $_POST['album'];

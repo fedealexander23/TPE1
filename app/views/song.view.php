@@ -2,9 +2,9 @@
 require_once './libs/smarty-4.2.1/libs/Smarty.class.php';
 
 class SongView{
-
+    
     private $smarty;
-
+    
     public function __construct() {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
@@ -13,9 +13,10 @@ class SongView{
         $this->smarty->display('home.tpl');
     }
 
-    public function showSong($songs) {
+    public function showSong($songs, $singer) {
         // asigno variables al tpl smarty
         $this->smarty->assign('songs', $songs);
+        $this->smarty->assign('singers', $singer);
 
         // mostrar el tpl
         $this->smarty->display('songList.tpl');
