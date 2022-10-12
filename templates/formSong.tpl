@@ -1,7 +1,5 @@
-
-<h2> Agregar cancion: </h2>
-
 <form action="add-song" method="POST" class="my-4">
+<label for="Artista..." class="form-label"><b>Agregar cancion:</b></label>
     <div class="form-floating mb-3">
       <input name="title" type="text" class="form-control" id="floatingInput" placeholder="Titulo">
       <label for="floatingInput"><b>Titulo:</b></label>

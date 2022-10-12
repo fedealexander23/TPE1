@@ -21,6 +21,8 @@
   </tbody>
 </table>
 <br>
+
 {include file="formSinger.tpl"}
+
 <br>
 {include file="footer.tpl"}

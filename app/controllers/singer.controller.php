@@ -14,11 +14,9 @@ class SingerController{
     }
     
     function showSinger(){
-        // PROBAR INSTANCIAR EN EL CONSTRUCTOR Y PASAR POR PARAMETRO A LA FUNCION 
         $authHelper = new AuthHelper();
-        $authHelper->checkLoggedIn();
         $singer = $this->model->getAllSinger();
-        $this->view->showSinger($singer);
+        $this->view->showSinger($singer, $authHelper);
     }
 
     function addSinger(){
