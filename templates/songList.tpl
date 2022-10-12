@@ -2,6 +2,9 @@
 
 <br>
 
+{include file="formfilter.tpl"} 
+
+<br>
 <!-- lista de tareas -->
 <ul class="list-group">
 {foreach from=$songs item=$song}
@@ -18,11 +21,8 @@
 
 <br>
 
-{include file="formfilter.tpl"} 
-
-<br>
-
 {include file="formSong.tpl"}
+
 <br>
 
 {include file="footer.tpl"}
