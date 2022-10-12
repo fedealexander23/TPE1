@@ -13,59 +13,70 @@ if (!empty($_GET['action'])) {
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
-// instancio el unico controller que existe por ahora
-$songController = new SongController();
-$singerController = new SingerController();
-$authController = new AuthController();
-
 // tabla de ruteo
 switch ($params[0]) {
     case 'login':
+        $authController = new AuthController();
         $authController->showFormLogin();
         break;
     case 'validate';
+        $authController = new AuthController();
         $authController->validateUser();
         break;
     case 'logout':
+        $authController = new AuthController();
         $authController->logout();
         break;
     case 'home'; //admin o invitado
+        $songController = new SongController();
         $songController->showHome();
         break;
     case 'songs':
+        $songController = new SongController();
         $songController->showSong();
         break;
     case 'singers':
+        $singerController = new SingerController();
         $singerController->showSinger();
         break;
     case 'song':
+        $songController = new SongController();
         $songController->showSongID($params[1]);
         break;
     case 'filter';
+        $songController = new SongController();
         $songController->filterSinger();
         break;
     case 'add-song':
+        $songController = new SongController();
         $songController->addSong();
         break;
     case 'delete-song': 
+        $songController = new SongController();
         $songController->deleteSong($params[1]);
         break;
     case 'edit-song':
+        $songController = new SongController();
         $songController->showEditForm($params[1]);
         break;
     case 'song-edit':
+        $songController = new SongController();
         $songController->editSong($params[1]);
         break;
     case 'add-singer':
+        $singerController = new SingerController();
         $singerController->addSinger();
         break;
-    case 'delete-singer': 
+    case 'delete-singer':
+        $singerController = new SingerController(); 
         $singerController->deleteSinger($params[1]);
         break;
     case 'edit-singer':
+        $singerController = new SingerController();
         $singerController->showEditForm($params[1]);
         break;
     case 'singer-edit':
+        $singerController = new SingerController();
         $singerController->editSinger($params[1]);
         break;
     default:
