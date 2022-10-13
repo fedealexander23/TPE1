@@ -48,16 +48,19 @@ class SongController{
         $album = $_POST['album'];
         $singer = $_POST['singer'];
 
-        if(isset($title) && isset($genere) && isset($album) && isset($singer)){
+        if(!isset($title) && !isset($genere) && !isset($album) && !isset($singer)){
+            header("Location: " . BASE_URL);
+        }
+        else{
             $songs = $this->model->insertSong($title, $genere, $album, $singer);
         }
 
-        header("Location: " . BASE_URL); 
+        header("Location: " . BASE_URL . "songs"); 
     }
 
     public function deleteSong($id){
         $this->model->deleteSongById($id);
-        header("Location: " . BASE_URL);
+        header("Location: " . BASE_URL . "songs");
     }
 
     public function showEditForm($id){
@@ -73,7 +76,7 @@ class SongController{
 
         if(isset($title)){
             $this->model->editSongById($title, $genere, $album, $singer, $id);
-            header("Location: " . BASE_URL);
+            header("Location: " . BASE_URL . "songs");
         }
     }
 }   
