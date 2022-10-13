@@ -4,7 +4,7 @@
 <ul class="list-group">
     {foreach from=$songs item=$song}
         <li class='list-group-item d-flex justify-content-between align-items-center'>
-            <span> <b>{$song->title}</b> - {$song->singer} - {$song->genere} - {$song->album}</span>
+            <span> <b>{$song->title}</b> - {$song->genere} - {$song->album} - <b>{$song->singer}</b> - {$song->nationality}</span>
             <div class="ml-auto">
                 <a href='songs' type='button' class='btn btn-secondary'>Volver</a>
             </div>
