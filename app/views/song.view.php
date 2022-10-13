@@ -23,11 +23,18 @@ class SongView{
         $this->smarty->display('songList.tpl');
     }
 
+    public function showSongID($songs){
+        // asigno variables al tpl smarty
+        $this->smarty->assign('songs', $songs);
+        // mostrar el tpl
+        $this->smarty->display('songID.tpl');
+    }
+
     public function showSongID_filter($songs){
         // asigno variables al tpl smarty
         $this->smarty->assign('songs', $songs);
         // mostrar el tpl
-        $this->smarty->display('song.id.filter.tpl');
+        $this->smarty->display('songIDFilter.tpl');
 
     }
 

@@ -27,7 +27,7 @@ class SongController{
 
     public function showSongID($id){
         $songs = $this->model->getSongID($id);
-        $this->view->showSongID_filter($songs);
+        $this->view->showSongID($songs);
 
     }
 
