@@ -11,5 +11,9 @@
         </li>
     {/foreach}
 </ul>
+<br>
+{if $song->img}
+    <img  style="width: 250px" src="{$song->img}" alt="img/{$song->singer}">
+{/if}
 
 {include file="footer.tpl"}

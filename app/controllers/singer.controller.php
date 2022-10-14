@@ -23,11 +23,14 @@ class SingerController{
     function addSinger(){
         $singer = $_POST['singer'];
         $nationality = $_POST['nationality'];
-
-        if(isset($singer) && isset($nationality)){
-            $singer = $this->model->insertSinger($singer, $nationality);
-            header("Location: " . BASE_URL . "singers" ); 
-        }
+        $img = $_FILES['img']['tmp_name'];
+        
+        if($img) 
+            $this->model->insertSinger($singer, $nationality, $img);
+        else
+            $this->model->insertSinger($singer, $nationality);
+        
+        header("Location: " . BASE_URL . "singers" ); 
     }
 
     function deleteSinger($singer){
@@ -44,13 +47,12 @@ class SingerController{
         
         $singer = $_POST['singer'];
         $nationality = $_POST['nationality'];
-
-        if(!isset($singer) || !isset($nationality)){
-            
-        }
-        else{
+        $img = $_FILES['img']['tmp_name'];
+        if($img){
+            $this->model->editSingerById($singer, $nationality, $id, $img);
+        }else{
             $this->model->editSingerById($singer, $nationality, $id);
-            header("Location: " . BASE_URL . "singers"); 
         }
+        header("Location: " . BASE_URL . "singers"); 
     }
 }

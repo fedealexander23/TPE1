@@ -25,7 +25,7 @@ class SongModel{
         // ya esta abierta por el constructor de la clase
 
         // 2. ejecuto la sentencia (2 subpasos)
-        $query = $this->db->prepare("SELECT a.*, b.nationality FROM songs a INNER JOIN singers b ON a.singer = b.singer where id = ? ");
+        $query = $this->db->prepare("SELECT a.*, b.nationality, b.img FROM songs a INNER JOIN singers b ON a.singer = b.singer where id = ? ");
         $query->execute([$id]);
         $songs = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         

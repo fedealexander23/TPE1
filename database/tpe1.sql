@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2022 a las 22:29:37
+-- Tiempo de generación: 14-10-2022 a las 02:27:20
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -29,22 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `singers` (
   `singer` varchar(45) NOT NULL,
-  `nationality` varchar(45) NOT NULL
+  `nationality` varchar(45) NOT NULL,
+  `img` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `singers`
 --
 
-INSERT INTO `singers` (`singer`, `nationality`) VALUES
-('Bad Bunny', 'Puerto Rico'),
-('Daddy Yankee', 'Puerto Rico'),
-('Duki', 'Argentina'),
-('Justin Bieber', 'Estados Unidos'),
-('Karol G', 'Colombia'),
-('Paulo Londra', 'Argentina'),
-('Quevedo', 'España'),
-('Trueno', 'Argentina');
+INSERT INTO `singers` (`singer`, `nationality`, `img`) VALUES
+('Bad Bunny', 'Puerto Rico', 'img/singers/6348a255231a5.jpg'),
+('Duki', 'Argentina', 'img/singers/6348a275f3ca7.jpg'),
+('Karol G', 'Colombia', NULL),
+('Paulo Londra', 'Argentina', 'img/singers/6348acca08bb7.jpg'),
+('Trueno', 'Argentina', 'img/singers/6348abbda2da2.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,15 +63,11 @@ CREATE TABLE `songs` (
 --
 
 INSERT INTO `songs` (`id`, `title`, `genere`, `album`, `singer`) VALUES
-(1, 'Me porto bonito', 'Regueton', 'Un verano sin ti', 'Bad Bunny'),
-(8, 'Moscow Mule', 'Urbano latino', 'Un verano sin ti', 'Bad Bunny'),
-(17, 'Gasolina', 'Regueton', 'a', 'Daddy Yankee'),
-(20, 'creeme', 'Urbano latino', 'Ocean', 'Karol G'),
-(24, 'Tal vez', 'Urbano Latino', 'album', 'Paulo Londra'),
-(25, 'Malbec', 'Urbano Latino', 'Desde el fin del mundo', 'Duki'),
-(26, 'Vista al mar', 'Urbano Latino', 'album', 'Quevedo'),
-(28, 'Cayo la noche', 'Urbano Latino', 'album', 'Quevedo'),
-(29, 'Dance crip', 'Urbano Latino', 'Bien o mal', 'Trueno');
+(38, 'Moscow mule', 'Urbano Latino', 'Un verano sin ti', 'Bad Bunny'),
+(39, 'Malbec', 'Urbano Latino', 'Desde el fin del mundo', 'Duki'),
+(40, 'Tal vez', 'Urbano Latino', 'Homerun', 'Paulo Londra'),
+(41, 'Dance crip', 'Urbano Latino', 'Bien o mal', 'Trueno'),
+(42, 'Creeme', 'Urbano Latino', 'Ocean', 'Karol G');
 
 -- --------------------------------------------------------
 
@@ -125,7 +119,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
