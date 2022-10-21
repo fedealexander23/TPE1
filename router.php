@@ -27,10 +27,6 @@ switch ($params[0]) {
         $authController = new AuthController();
         $authController->logout();
         break;
-    case 'home'; //admin o invitado
-        $songController = new SongController();
-        $songController->showHome();
-        break;
     case 'songs':
         $songController = new SongController();
         $songController->showSong();
