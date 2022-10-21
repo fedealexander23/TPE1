@@ -2,7 +2,7 @@
 
 <br>
 
-{include file="formfilter.tpl"} 
+{include file="formFilter.tpl"} 
 
 <br>
 <!-- lista de tareas -->
