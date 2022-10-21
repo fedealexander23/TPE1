@@ -13,10 +13,6 @@ class SongController{
         $this->view = new SongView();
     }
 
-    public function showHome(){
-        $this->view->showHome();
-    }
-
     public function showSong(){
         $authHelper = new AuthHelper();
         $this->modelSinger = new SingerModel();
@@ -42,30 +38,38 @@ class SongController{
     }
 
     public function addSong(){
-
         $title = $_POST['title'];
         $genere = $_POST['genere'];
         $album = $_POST['album'];
         $singer = $_POST['singer'];
 
-        if(!isset($title) && !isset($genere) && !isset($album) && !isset($singer)){
-            header("Location: " . BASE_URL);
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            if(!isset($title) && !isset($genere) && !isset($album) && !isset($singer)){
+                header("Location: " . BASE_URL);
+            }
+            else{
+                $songs = $this->model->insertSong($title, $genere, $album, $singer);
+            }
         }
-        else{
-            $songs = $this->model->insertSong($title, $genere, $album, $singer);
-        }
-
         header("Location: " . BASE_URL . "songs"); 
     }
 
     public function deleteSong($id){
-        $this->model->deleteSongById($id);
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            $this->model->deleteSongById($id);
+        }
         header("Location: " . BASE_URL . "songs");
     }
 
     public function showEditForm($id){
-        $song = $this->model->getSongID($id);
-        $this->view->showFormEdit($song);
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            $song = $this->model->getSongID($id);
+            $this->view->showFormEdit($song);
+        }
+        header("Location: " . BASE_URL . "songs");
     }
 
     public function editSong($id){
@@ -74,9 +78,10 @@ class SongController{
         $album = $_POST['album'];
         $singer = $_POST['singer'];
 
-        if(isset($title)){
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
             $this->model->editSongById($title, $genere, $album, $singer, $id);
-            header("Location: " . BASE_URL . "songs");
         }
+        header("Location: " . BASE_URL . "songs");
     }
 }   

@@ -7,8 +7,6 @@ class SingerController{
     private $model;
     private $view;
     
-    
-    
     public function __construct() {
         $this->model = new SingerModel();
         $this->view = new SingerView();
@@ -24,34 +22,45 @@ class SingerController{
         $singer = $_POST['singer'];
         $nationality = $_POST['nationality'];
         $img = $_FILES['img']['tmp_name'];
-        
-        if($img) 
-            $this->model->insertSinger($singer, $nationality, $img);
-        else
-            $this->model->insertSinger($singer, $nationality);
-        
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            if($img){ 
+                $this->model->insertSinger($singer, $nationality, $img);
+            }else{
+                $this->model->insertSinger($singer, $nationality);
+            }
+        }   
         header("Location: " . BASE_URL . "singers" ); 
     }
 
     function deleteSinger($singer){
-        $this->model->deleteSingerById($singer);
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            $this->model->deleteSingerById($singer);
+        }
         header("Location: " . BASE_URL . 'singers');
     }
-
+    
     function showEditForm($id){
-        $singer = $this->model->getSingerID($id);
-        $this->view->showFormEdit($singer);
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            $singer = $this->model->getSingerID($id);
+            $this->view->showFormEdit($singer);
+        }
     }
 
     function editSinger($id){
-        
         $singer = $_POST['singer'];
         $nationality = $_POST['nationality'];
         $img = $_FILES['img']['tmp_name'];
-        if($img){
-            $this->model->editSingerById($singer, $nationality, $id, $img);
-        }else{
-            $this->model->editSingerById($singer, $nationality, $id);
+
+        $authHelper = new AuthHelper();
+        if($authHelper->isAdmin()){
+            if($img){
+                $this->model->editSingerById($singer, $nationality, $id, $img);
+            }else{
+                $this->model->editSingerById($singer, $nationality, $id);
+            }
         }
         header("Location: " . BASE_URL . "singers"); 
     }
